@@ -22,11 +22,12 @@ Este é um projeto front-end desenvolvido para a disciplina de Ciências da Comp
 - `assets/js/script.js`: Lógica JavaScript.
 - `assets/data/dados.json`: Dados em formato JSON.
 - `assets/img/`: Imagens do projeto.
+- `produtos.html`: Página de compra da aplicação.
 
 ## Membros do Grupo
-- [Nome do Membro 1]
-- [Nome do Membro 2]
-- [Nome do Membro 3]
+- [Gabriel Marcos Ferreira da Silva S.I]
+- [Arthur Vinicius Sena Campos S.I]
+- [Felipe Oliveira Carvalho S.I]
 
 ## Observações
 - O projeto atende aos critérios do barema: estrutura HTML/JSF (20%), JavaScript (30%), CSS (40%) e organização (10%).
