@@ -1,37 +1,32 @@
-// Função para login simulado
-function simularLogin() {
-    const form = document.getElementById('login-form');
-    if (form) {
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            if (username && password) {
-                localStorage.setItem('user', username);
-                window.location.href = 'index.html';
-            } else {
-                alert('Preencha todos os campos!');
-            }
-        });
-    }
-}
+document.addEventListener("DOMContentLoaded", function() {
+    const form = document.getElementById("loginForm");
 
-// Carregar itens do JSON (exemplo)
-function carregarItens() {
-    const lista = document.getElementById('lista-itens');
-    if (lista) {
-        fetch('assets/data/dados.json')
-            .then(response => response.json())
-            .then(data => {
-                data.forEach(item => {
-                    const div = document.createElement('div');
-                    div.textContent = item.nome; // Exemplo: ajustar conforme o JSON
-                    lista.appendChild(div);
-                });
-            });
-    }
-}
+    form.addEventListener("submit", function(event) {
+        event.preventDefault();
 
-// Inicializar
-simularLogin();
-carregarItens();
+        const user = document.getElementById("user").value;
+        const password = document.getElementById("password").value;
+
+        if(user === "admin" && password === "123") {
+            alert("Login efetuado com sucesso!");
+            window.location.href = "home.html"; // Redireciona para a página de dashboard
+        } else {
+            alert("Usuário ou senha inválidos.");
+        }
+    });
+});
+
+function togglePasswordVisibility() {
+        const passwordInput = document.getElementById("password");
+        const icon = document.querySelector(".toggle-password");
+
+        const isPasswordVisible = passwordInput.type === "text";
+        passwordInput.type = isPasswordVisible ? "password" : "text";
+
+        // Alterna os ícones
+        icon.classList.toggle("fa-eye");
+        icon.classList.toggle("fa-eye-slash");
+        console.log("Visibilidade da senha alterada:", !isPasswordVisible);
+    }
+
+    
