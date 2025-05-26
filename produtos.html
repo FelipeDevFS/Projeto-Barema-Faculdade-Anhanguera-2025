@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechParts - Peças de Computador</title>
+   <link rel="stylesheet" href="./assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="nav">
+                <div class="logo">
+                    <h1>TechParts</h1>
+                </div>
+                <nav class="nav-menu">
+                    <a href="#home">Início</a>
+                    <a href="#produtos">Produtos</a>
+                    <a href="#sobre">Sobre</a>
+                    <a href="#contato">Contato</a>
+                </nav>
+                <div class="nav-actions">
+                    <a href="login.html" class="btn-login">Login</a>
+                    <button class="cart-btn">🛒 <span class="cart-count">0</span></button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h2>As Melhores Peças de Computador</h2>
+                    <p>Encontre processadores, placas de vídeo, memórias RAM e muito mais com os melhores preços do mercado.</p>
+                    <a href="#produtos" class="btn-primary">Ver Produtos</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="produtos" class="products">
+            <div class="container">
+                <h2 class="section-title">Nossos Produtos</h2>
+                
+                <div class="categories">
+                    <button class="category-btn active" data-category="all">Todos</button>
+                    <button class="category-btn" data-category="processador">Processadores</button>
+                    <button class="category-btn" data-category="gpu">Placas de Vídeo</button>
+                    <button class="category-btn" data-category="memoria">Memórias</button>
+                    <button class="category-btn" data-category="storage">Armazenamento</button>
+                </div>
+
+                <div class="products-grid">
+                    <div class="product-card" data-category="processador">
+                        <div class="product-image">
+                            <img src="/placeholder.svg?height=200&width=200" alt="Intel Core i7">
+                        </div>
+                        <div class="product-info">
+                            <h3>Intel Core i7-13700K</h3>
+                            <p class="product-description">Processador de alta performance para gaming e produtividade</p>
+                            <div class="product-price">
+                                <span class="price">R$ 2.299,90</span>
+                                <span class="old-price">R$ 2.599,90</span>
+                            </div>
+                            <button class="btn-add-cart">Adicionar ao Carrinho</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-category="gpu">
+                        <div class="product-image">
+                            <img src="/placeholder.svg?height=200&width=200" alt="RTX 4070">
+                        </div>
+                        <div class="product-info">
+                            <h3>NVIDIA RTX 4070</h3>
+                            <p class="product-description">Placa de vídeo para jogos em 4K e ray tracing</p>
+                            <div class="product-price">
+                                <span class="price">R$ 3.499,90</span>
+                            </div>
+                            <button class="btn-add-cart">Adicionar ao Carrinho</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-category="memoria">
+                        <div class="product-image">
+                            <img src="/placeholder.svg?height=200&width=200" alt="Corsair Vengeance">
+                        </div>
+                        <div class="product-info">
+                            <h3>Corsair Vengeance 32GB DDR5</h3>
+                            <p class="product-description">Kit de memória RAM de alta velocidade</p>
+                            <div class="product-price">
+                                <span class="price">R$ 899,90</span>
+                            </div>
+                            <button class="btn-add-cart">Adicionar ao Carrinho</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-category="storage">
+                        <div class="product-image">
+                            <img src="/placeholder.svg?height=200&width=200" alt="Samsung SSD">
+                        </div>
+                        <div class="product-info">
+                            <h3>Samsung 980 PRO 1TB</h3>
+                            <p class="product-description">SSD NVMe M.2 de alta velocidade</p>
+                            <div class="product-price">
+                                <span class="price">R$ 549,90</span>
+                                <span class="old-price">R$ 699,90</span>
+                            </div>
+                            <button class="btn-add-cart">Adicionar ao Carrinho</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-category="processador">
+                        <div class="product-image">
+                            <img src="/placeholder.svg?height=200&width=200" alt="AMD Ryzen">
+                        </div>
+                        <div class="product-info">
+                            <h3>AMD Ryzen 7 7700X</h3>
+                            <p class="product-description">Processador AMD de última geração</p>
+                            <div class="product-price">
+                                <span class="price">R$ 1.899,90</span>
+                            </div>
+                            <button class="btn-add-cart">Adicionar ao Carrinho</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-category="gpu">
+                        <div class="product-image">
+                            <img src="/placeholder.svg?height=200&width=200" alt="RX 7800 XT">
+                        </div>
+                        <div class="product-info">
+                            <h3>AMD RX 7800 XT</h3>
+                            <p class="product-description">Placa de vídeo AMD para gaming em alta resolução</p>
+                            <div class="product-price">
+                                <span class="price">R$ 2.999,90</span>
+                            </div>
+                            <button class="btn-add-cart">Adicionar ao Carrinho</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="sobre" class="about">
+            <div class="container">
+                <div class="about-content">
+                    <h2>Sobre a TechParts</h2>
+                    <p>Somos especialistas em peças de computador há mais de 10 anos. Oferecemos produtos de qualidade com os melhores preços do mercado, garantia estendida e suporte técnico especializado.</p>
+                    <div class="features">
+                        <div class="feature">
+                            <h3>🚚 Entrega Rápida</h3>
+                            <p>Entregamos em todo o Brasil com frete grátis acima de R$ 299</p>
+                        </div>
+                        <div class="feature">
+                            <h3>🛡️ Garantia Estendida</h3>
+                            <p>Todos os produtos com garantia de fábrica + garantia da loja</p>
+                        </div>
+                        <div class="feature">
+                            <h3>💬 Suporte Técnico</h3>
+                            <p>Equipe especializada para tirar suas dúvidas</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>TechParts</h3>
+                    <p>Sua loja de confiança para peças de computador</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Links Úteis</h4>
+                    <ul>
+                        <li><a href="#home">Início</a></li>
+                        <li><a href="#produtos">Produtos</a></li>
+                        <li><a href="#sobre">Sobre</a></li>
+                        <li><a href="#contato">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contato</h4>
+                    <p>📧 contato@techparts.com.br</p>
+                    <p>📱 (11) 99999-9999</p>
+                    <p>📍 São Paulo, SP</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 TechParts. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Filtro de categorias
+        const categoryBtns = document.querySelectorAll('.category-btn');
+        const productCards = document.querySelectorAll('.product-card');
+
+        categoryBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                categoryBtns.forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                btn.classList.add('active');
+
+                const category = btn.dataset.category;
+
+                productCards.forEach(card => {
+                    if (category === 'all' || card.dataset.category === category) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Carrinho de compras
+        let cartCount = 0;
+        const cartCountElement = document.querySelector('.cart-count');
+        const addToCartBtns = document.querySelectorAll('.btn-add-cart');
+
+        addToCartBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                cartCount++;
+                cartCountElement.textContent = cartCount;
+                btn.textContent = 'Adicionado!';
+                btn.style.backgroundColor = '#10b981';
+                
+                setTimeout(() => {
+                    btn.textContent = 'Adicionar ao Carrinho';
+                    btn.style.backgroundColor = '';
+                }, 2000);
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
