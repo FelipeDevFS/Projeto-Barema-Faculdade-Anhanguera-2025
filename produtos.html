@@ -46,7 +46,30 @@
     <!-- A seção #produtos vai ser gerada dinamicamente via JS -->
     <section id="produtos" class="products">
       <div class="container">
-        <h2 class="section-title">Nossos Produtos</h2>
+        
+
+
+<!-- Filtro por Categoria -->
+<div class="filtro-categoria">
+    <label for="categoria">Filtrar por:</label>
+    <select id="categoria" onchange="filtrarPorCategoria()">
+      <option value="sem-filtro">SEM FILTRO</option>
+        <option value="todos">Todos</option>
+        <option value="processador">Processadores</option>
+        <option value="gpu">GPUs</option>
+        <option value="memoria">Memória RAM</option>
+        <option value="storage">Armazenamento</option>
+    </select>
+</div>
+
+<!-- Container onde os produtos serão renderizados -->
+<div id="produtos-container" class="produtos-lista"></div>
+
+
+
+
+
+
         <div class="categories" id="categories"></div>
         <div class="products-grid" id="productsGrid"></div>
       </div>

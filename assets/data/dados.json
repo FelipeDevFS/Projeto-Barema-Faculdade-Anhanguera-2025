@@ -6,7 +6,7 @@
     "preco": "R$ 3.999,90",
     "precoAntigo": "R$ 4.299,90",
     "categoria": "processador",
-    "imagem": "./assets/img/ProcessadorI9.jpg?height=200&width=200"
+    "imagem": "./assets/img/ProcessadorI9.jpg"
   },
   {
     "id": 2,
@@ -14,7 +14,7 @@
     "descricao": "A GPU mais potente do mundo para desempenho extremo",
     "preco": "R$ 11.999,90",
     "categoria": "gpu",
-    "imagem": "./assets/img/rtx4090.jpg?height=200&width=200"
+    "imagem": "./assets/img/rtx4090.jpg"
   },
   {
     "id": 3,
@@ -22,7 +22,7 @@
     "descricao": "Memória RAM de alta performance com iluminação RGB",
     "preco": "R$ 2.199,90",
     "categoria": "memoria",
-    "imagem": "./assets/img/RAM.jpg?height=200&width=200"
+    "imagem": "./assets/img/RAM.jpg"
   },
   {
     "id": 4,
@@ -31,6 +31,6 @@
     "preco": "R$ 1.299,90",
     "precoAntigo": "R$ 1.499,90",
     "categoria": "storage",
-    "imagem": "./assets/img/NVME.jpg?height=200&width=200"
+    "imagem": "./assets/img/NVME.jpg"
   }
 ]
