@@ -1,5 +1,36 @@
 [
-    {"id": 1, "nome": "Item 1"},
-    {"id": 2, "nome": "Item 2"},
-    {"id": 3, "nome": "Item 3"}
+  {
+    "id": 1,
+    "nome": "Intel Core i9-14900K",
+    "descricao": "Processador topo de linha para gamers e criadores de conteúdo",
+    "preco": "R$ 3.999,90",
+    "precoAntigo": "R$ 4.299,90",
+    "categoria": "processador",
+    "imagem": "./assets/img/ProcessadorI9.jpg?height=200&width=200"
+  },
+  {
+    "id": 2,
+    "nome": "NVIDIA RTX 4090",
+    "descricao": "A GPU mais potente do mundo para desempenho extremo",
+    "preco": "R$ 11.999,90",
+    "categoria": "gpu",
+    "imagem": "/assets/img/rtx4090.jpg?height=200&width=200"
+  },
+  {
+    "id": 3,
+    "nome": "Corsair Dominator",
+    "descricao": "Memória RAM de alta performance com iluminação RGB",
+    "preco": "R$ 2.199,90",
+    "categoria": "memoria",
+    "imagem": "/placeholder.svg?height=200&width=200"
+  },
+  {
+    "id": 4,
+    "nome": "Samsung 990 PRO 2TB NVMe",
+    "descricao": "SSD ultrarrápido para quem exige o máximo",
+    "preco": "R$ 1.299,90",
+    "precoAntigo": "R$ 1.499,90",
+    "categoria": "storage",
+    "imagem": "/placeholder.svg?height=200&width=200"
+  }
 ]

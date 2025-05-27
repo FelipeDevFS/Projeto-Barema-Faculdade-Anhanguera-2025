@@ -1,32 +1,51 @@
-document.addEventListener("DOMContentLoaded", function() {
-    const form = document.getElementById("loginForm");
+document.addEventListener("DOMContentLoaded", function () {
+  // Se já estiver logado e estiver na página login, redireciona para home
+  if (localStorage.getItem("isLoggedIn") === "true") {
+    window.location.href = "home.html";
+  }
 
-    form.addEventListener("submit", function(event) {
-        event.preventDefault();
+  const form = document.getElementById("loginForm");
 
-        const user = document.getElementById("user").value;
-        const password = document.getElementById("password").value;
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
 
-        if(user === "admin" && password === "123") {
-            alert("Login efetuado com sucesso!");
-            window.location.href = "home.html"; // Redireciona para a página de dashboard
-        } else {
-            alert("Usuário ou senha inválidos.");
-        }
-    });
+    const user = document.getElementById("user").value;
+    const password = document.getElementById("password").value;
+
+    if (user === "admin" && password === "123") {
+      localStorage.setItem("isLoggedIn", "true");
+
+      const modal = document.getElementById("successModal");
+      modal.style.display = "block";
+
+      setTimeout(() => {
+        window.location.href = "home.html";
+      }, 2000);
+    } else {
+      const modal = document.getElementById("ModalFailed");
+      modal.style.display = "block";
+    }
+  });
 });
 
 function togglePasswordVisibility() {
-        const passwordInput = document.getElementById("password");
-        const icon = document.querySelector(".toggle-password");
+  const passwordInput = document.getElementById("password");
+  const icon = document.querySelector(".toggle-password");
 
-        const isPasswordVisible = passwordInput.type === "text";
-        passwordInput.type = isPasswordVisible ? "password" : "text";
+  const isPasswordVisible = passwordInput.type === "text";
+  passwordInput.type = isPasswordVisible ? "password" : "text";
 
-        // Alterna os ícones
-        icon.classList.toggle("fa-eye");
-        icon.classList.toggle("fa-eye-slash");
-        console.log("Visibilidade da senha alterada:", !isPasswordVisible);
-    }
+  icon.classList.toggle("fa-eye");
+  icon.classList.toggle("fa-eye-slash");
+}
 
-    
+function closeModal(modalId) {
+  const modal = document.getElementById(modalId);
+  modal.style.display = "none";
+
+  if (modalId === "ModalFailed") {
+    document.getElementById("user").value = "";
+    document.getElementById("password").value = "";
+    document.getElementById("user").focus();
+  }
+}
