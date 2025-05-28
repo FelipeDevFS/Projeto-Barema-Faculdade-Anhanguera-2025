@@ -1,7 +1,23 @@
+/* Esconde a barra de rolagem, mas mantém a funcionalidade */
+html {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE e Edge */
+}
+
+html::-webkit-scrollbar {
+  display: none; /* Chrome, Safari e Opera */
+}
+
+/* Garante que a rolagem ainda funcione */
+body {
+  overflow-y: scroll; /* Mantém a funcionalidade de rolagem vertical */
+  -webkit-overflow-scrolling: touch; /* Melhora a rolagem em dispositivos móveis */
+}
+
+/* Restante do seu CSS original */
 * {
   font-family: Poppins;
 }
-
 
 .produto-card {
   border: 1px solid #ccc;
@@ -13,10 +29,10 @@
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
   font-family: Poppins, sans-serif;
   display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
 }
 
 .products-grid {
@@ -42,57 +58,165 @@
   font-size: 16px;
 }
 
-
-
-
 /* Controla tamanho das imagens !!! */
-
 .produto img {
-    width: 100px;       /* Largura fixa */
-    height: 100px;      /* Altura fixa */
-    object-fit: cover;  /* Garante que a imagem cubra o espaço sem distorcer */
-    border-radius: 5px;
-    margin-bottom: 10px;
+  width: 100px;       /* Largura fixa */
+  height: 100px;      /* Altura fixa */
+  object-fit: cover;  /* Garante que a imagem cubra o espaço sem distorcer */
+  border-radius: 5px;
+  margin-bottom: 10px;
 }
-
 
 /* Estilo do filtro !!!!!!!! */
 .filtro-categoria {
-    margin: 20px 0;
-    padding: 10px;
-    background: #f5f5f5;
-    border-radius: 5px;
+  margin: 20px 0;
+  padding: 10px;
+  background: #f5f5f5;
+  border-radius: 5px;
 }
 
 .filtro-categoria select {
-    padding: 8px;
-    border-radius: 4px;
-    border: 1px solid #ddd;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
 }
 
 /* Estilo dos produtos */
 .produtos-lista {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
-    padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
 }
 
 .produto {
-    border: 1px solid #ddd;
-    padding: 15px;
-    border-radius: 8px;
-    text-align: center;
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
 }
 
 .preco {
-    font-weight: bold;
-    color: #2ecc71;
-    font-size: 1.2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #2ecc71;
+  font-size: 1.2em;
 }
 
 .preco-antigo {
-    text-decoration: line-through;
-    color: #e74c3c;
-    font-size: 0.9em;
+  text-decoration: line-through;
+  color: #e74c3c;
+  font-size: 0.9em;
+}
+
+/* ESTILOS DO MODAL DO CARRINHO DE COMPRAS */
+.modal {
+  display: none; /* Oculto por padrão */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content-2 {
+  background-color: #fff;
+  position: fixed; /* Mantém o modal fixo na tela */
+  
+  /* Centraliza o modal na tela */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Centraliza horizontal e verticalmente */
+
+  display: flex; /* Altere para flex para centralizar o conteúdo interno */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  margin: 0; /* Remove margem automática */
+  padding: 30px;
+  border-radius: 12px;
+  
+  width: 600px;
+  height: 80vh;
+  max-width: none; 
+  
+  overflow: auto; /* Sem scroll interno */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  
+  gap: 24px; /* Espaçamento maior entre os itens */
+}
+
+.close-modal {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close-modal:hover {
+  color: #000;
+}
+
+.cart-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.empty-cart {
+  color: #888;
+  font-size: 16px;
+  text-align: center;
+}
+
+.cart-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Grade responsiva */
+  gap: 20px;
+  width: 100%;
+  padding: 10px;
+}
+
+.cart-item {
+  background: #f9f9f9;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.cart-item-img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.cart-item-details {
+  flex-grow: 1;
+}
+
+.cart-item-name {
+  font-size: 16px;
+  font-weight: 500;
+  color: #222;
+  margin: 0;
+}
+
+.cart-item-price {
+  font-size: 14px;
+  color: #28a745;
+  margin: 5px 0 0;
 }

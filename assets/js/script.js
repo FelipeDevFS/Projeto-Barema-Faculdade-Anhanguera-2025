@@ -19,8 +19,8 @@ document.addEventListener("DOMContentLoaded", function () {
       modal.style.display = "block";
 
         setTimeout(() => {
-  window.location.replace("home.html"); // <-- Isso substitui no histórico!
-}, 2000);
+        window.location.replace("home.html"); // <-- Isso substitui no histórico!
+      }, 2000);
 
     } else {
       const modal = document.getElementById("ModalFailed");
