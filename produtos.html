@@ -37,41 +37,28 @@
         <div class="hero-content">
           <h2>As Melhores Peças de Computador</h2>
           <p>Encontre processadores, placas de vídeo, memórias RAM e muito mais com os melhores preços do mercado.</p>
-          <a href="#produtos" class="btn-primary">Ver Produtos</a>
+          <nav class="menu_2">
+            <a href="#produtos" class="btn-primary">Ver Produtos</a>
+          </nav>
         </div>
       </div>
     </section>
 
-
-    <!-- A seção #produtos vai ser gerada dinamicamente via JS -->
     <section id="produtos" class="products">
       <div class="container">
-        
+        <div class="filtro-categoria">
+          <label for="categoria">Filtrar por:</label>
+          <select id="categoria" onchange="filtrarPorCategoria()">
+            <option value="todos">Todos</option>
+            <option value="processador">Processadores</option>
+            <option value="gpu">GPUs</option>
+            <option value="memoria">Memória RAM</option>
+            <option value="storage">Armazenamento</option>
+          </select>
+        </div>
 
-
-<!-- Filtro por Categoria -->
-<div class="filtro-categoria">
-    <label for="categoria">Filtrar por:</label>
-    <select id="categoria" onchange="filtrarPorCategoria()">
-      <option value="sem-filtro">SEM FILTRO</option>
-        <option value="todos">Todos</option>
-        <option value="processador">Processadores</option>
-        <option value="gpu">GPUs</option>
-        <option value="memoria">Memória RAM</option>
-        <option value="storage">Armazenamento</option>
-    </select>
-</div>
-
-<!-- Container onde os produtos serão renderizados -->
-<div id="produtos-container" class="produtos-lista"></div>
-
-
-
-
-
-
-        <div class="categories" id="categories"></div>
-        <div class="products-grid" id="productsGrid"></div>
+        <!-- Apenas um container para renderizar os produtos -->
+        <div id="productsGrid" class="products-grid"></div>
       </div>
     </section>
 
@@ -79,21 +66,7 @@
       <div class="container">
         <div class="about-content">
           <h2>Sobre a TechParts</h2>
-          <p>Somos especialistas em peças de computador há mais de 10 anos. Oferecemos produtos de qualidade com os melhores preços do mercado, garantia estendida e suporte técnico especializado.</p>
-          <div class="features">
-            <div class="feature">
-              <h3>🚚 Entrega Rápida</h3>
-              <p>Entregamos em todo o Brasil com frete grátis acima de R$ 299</p>
-            </div>
-            <div class="feature">
-              <h3>🛡️ Garantia Estendida</h3>
-              <p>Todos os produtos com garantia de fábrica + garantia da loja</p>
-            </div>
-            <div class="feature">
-              <h3>💬 Suporte Técnico</h3>
-              <p>Equipe especializada para tirar suas dúvidas</p>
-            </div>
-          </div>
+          <p>Somos especialistas em peças de computador há mais de 10 anos...</p>
         </div>
       </div>
     </section>
@@ -106,7 +79,6 @@
           <h3>TechParts</h3>
           <p>Sua loja de confiança para peças de computador</p>
         </div>
-
         <div class="footer-section">
           <h4>Contato</h4>
           <p>📧 anhanguera@gmail.com</p>
