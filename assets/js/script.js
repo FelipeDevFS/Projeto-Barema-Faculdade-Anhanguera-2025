@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
       modal.style.display = "block";
 
       setTimeout(() => {
-        window.location.href = "home.html";
+        window.location.replace = "home.html";
       }, 2000);
     } else {
       const modal = document.getElementById("ModalFailed");
