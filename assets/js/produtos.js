@@ -161,4 +161,73 @@ function renderizarProdutos(lista) {
 }
 
 // --------------------------------------------------------------------------------- //
+// RENDERIZAR CARRINHO NO MODAL 
+function renderizarCarrinho() {
+  const modalContent = document.querySelector(".modal-content-2");
+  const modal = document.getElementById("cartModal");
+
+  // Limpa o conteúdo e adiciona o título e o botão de fechar
+  modalContent.innerHTML = `<span class="close-modal">×</span><h2 class="cart-title">Seu Carrinho</h2>`;
+
+  // Adiciona o evento de fechar ao botão "X" antes de qualquer verificação
+  const closeBtn = modalContent.querySelector(".close-modal");
+  closeBtn.addEventListener("click", () => {
+    modal.style.display = "none";
+  });
+
+  // Verifica se o carrinho está vazio
+  if (carrinhoItens.length === 0) {
+    const emptyMessage = document.createElement("p");
+    emptyMessage.classList.add("empty-cart");
+    emptyMessage.textContent = "Seu carrinho está vazio.";
+    modalContent.appendChild(emptyMessage);
+    return;
+  }
+
+  // Renderiza os itens do carrinho
+  const cartList = document.createElement("div");
+  cartList.classList.add("cart-list");
+  modalContent.appendChild(cartList);
+
+  carrinhoItens.forEach(item => {
+    const itemDiv = document.createElement("div");
+    itemDiv.classList.add("cart-item");
+
+    itemDiv.innerHTML = `
+      <img src="${item.produto.imagem}" alt="${item.produto.nome}" class="cart-item-img">
+      <div class="cart-item-details">
+        <h4 class="cart-item-name">${item.produto.nome}</h4>
+        <p class="cart-item-price">${item.produto.preco}</p>
+        <p class="cart-item-quantity">Quantidade: ${item.quantidade}</p>
+      </div>
+      <span class="icon-add" onclick="adicionarAoCarrinho('${item.produto.nome}')"><i class="fas fa-plus"></i></span>
+      <span class="icon-remove" onclick="removerDoCarrinho('${item.produto.nome}')"><i class="fas fa-trash"></i></span>
+    `;
+
+    cartList.appendChild(itemDiv);
+  });
+}
+
+// --------------------------------------------------------------------------------- //
 // ANIMAÇÃO DE SCROLL SUAVE PARA LINKS DO MENU
+document.querySelectorAll('nav.nav-menu a[href^="#"]').forEach(link => {
+  link.addEventListener('click', function(event) {
+    event.preventDefault();
+    const targetID = this.getAttribute('href').substring(1);
+    const targetSection = document.getElementById(targetID);
+    if (targetSection) {
+      targetSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+});
+
+document.querySelectorAll('nav.menu_2 a[href^="#"]').forEach(link => {
+  link.addEventListener('click', function(event) {
+    event.preventDefault();
+    const targetID = this.getAttribute('href').substring(1);
+    const targetSection = document.getElementById(targetID);
+    if (targetSection) {
+      targetSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+});
