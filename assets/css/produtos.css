@@ -1,20 +1,17 @@
-/* Esconde a barra de rolagem, mas mantém a funcionalidade */
+/* Esconde a barra de rolagem da página, mas mantém funcionalidade */
 html {
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE e Edge */
 }
-
 html::-webkit-scrollbar {
   display: none; /* Chrome, Safari e Opera */
 }
-
-/* Garante que a rolagem ainda funcione */
 body {
-  overflow-y: scroll; /* Mantém a funcionalidade de rolagem vertical */
-  -webkit-overflow-scrolling: touch; /* Melhora a rolagem em dispositivos móveis */
+  overflow-y: scroll; /* Mantém a funcionalidade de rolagem */
+  -webkit-overflow-scrolling: touch; /* Melhora rolagem em dispositivos móveis */
 }
 
-/* Restante do seu CSS original */
+/* Estilos existentes */
 * {
   font-family: Poppins;
 }
@@ -58,16 +55,16 @@ body {
   font-size: 16px;
 }
 
-/* Controla tamanho das imagens !!! */
+/* Controla tamanho das imagens */
 .produto img {
-  width: 100px;       /* Largura fixa */
-  height: 100px;      /* Altura fixa */
-  object-fit: cover;  /* Garante que a imagem cubra o espaço sem distorcer */
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
   border-radius: 5px;
   margin-bottom: 10px;
 }
 
-/* Estilo do filtro !!!!!!!! */
+/* Estilo do filtro */
 .filtro-categoria {
   margin: 20px 0;
   padding: 10px;
@@ -122,41 +119,133 @@ body {
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .modal-content-2 {
   background-color: #fff;
-  position: fixed; /* Mantém o modal fixo na tela */
-  
-  /* Centraliza o modal na tela */
+  position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); /* Centraliza horizontal e verticalmente */
-
-  display: flex; /* Altere para flex para centralizar o conteúdo interno */
+  transform: translate(-50%, -50%);
+  display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  margin: 0;
+  padding: 20px;
+  border-radius: 8px;
+  width: 500px;
+  max-width: 90vw;
+  height: 70vh;
+  max-height: 80vh;
+  overflow-y: auto;
+  border: 1px solid #e0e0e0;
+  gap: 15px;
+}
 
-  margin: 0; /* Remove margem automática */
-  padding: 30px;
-  border-radius: 12px;
-  
-  width: 600px;
-  height: 80vh;
-  max-width: none; 
-  
-  overflow: auto; /* Sem scroll interno */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-  
-  gap: 24px; /* Espaçamento maior entre os itens */
+/* Estiliza a barra de rolagem do modal */
+.modal-content-2::-webkit-scrollbar {
+  width: 6px;
+}
+.modal-content-2::-webkit-scrollbar-track {
+  background: #f5f5f5;
+}
+.modal-content-2::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 3px;
+}
+.modal-content-2::-webkit-scrollbar-thumb:hover {
+  background: #aaa;
+}
+
+.cart-title {
+  font-size: 20px;
+  font-weight: 500;
+  color: #333;
+  margin: 0;
+}
+
+.empty-cart {
+  color: #777;
+  font-size: 14px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.cart-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 10px;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  gap: 15px;
+}
+
+.cart-item:last-child {
+  border-bottom: none;
+}
+
+.cart-item-img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.cart-item-details {
+  flex-grow: 1;
+}
+
+.cart-item-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  margin: 0;
+}
+
+.cart-item-price {
+  font-size: 13px;
+  color: #28a745;
+  margin: 2px 0 0;
+}
+
+.icon-add, .icon-remove {
+  display: inline-block;
+  padding: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.icon-add i {
+  color: #28a745;
+}
+
+.icon-add:hover i {
+  color: #1f7a35;
+}
+
+.icon-remove i {
+  color: #e74c3c;
+}
+
+.icon-remove:hover i {
+  color: #b83b2f;
 }
 
 .close-modal {
   color: #aaa;
-  float: right;
-  font-size: 28px;
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
   font-weight: bold;
   cursor: pointer;
 }
@@ -165,58 +254,171 @@ body {
   color: #000;
 }
 
-.cart-title {
-  font-size: 24px;
-  font-weight: 600;
-  color: #333;
-  margin-bottom: 10px;
+/* Responsividade */
+@media (max-width: 768px) {
+  .modal-content-2 {
+    width: 85vw;
+    height: 65vh;
+    padding: 15px;
+  }
+  .cart-item-img {
+    width: 50px;
+    height: 50px;
+  }
+  .cart-item-name {
+    font-size: 13px;
+  }
+  .cart-item-price {
+    font-size: 12px;
+  }
 }
 
-.empty-cart {
-  color: #888;
-  font-size: 16px;
+/* Estilo para o ícone de informações nos produtos */
+.product-header {
+  position: relative;
+  width: 200px;
+  height: 200px;
+}
+
+.info-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 18px;
+  color: #666;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.info-icon:hover {
+  color: #333;
+}
+
+/* Estilo do modal de detalhes */
+.details-modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content-details {
+  background-color: #fff;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px;
+  max-width: 90vw;
+  max-height: 80vh;
+  overflow-y: auto;
+  border: 1px solid #e0e0e0;
+  gap: 10px;
+}
+
+.modal-content-details::-webkit-scrollbar {
+  width: 6px;
+}
+.modal-content-details::-webkit-scrollbar-track {
+  background: #f5f5f5;
+}
+.modal-content-details::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 3px;
+}
+.modal-content-details::-webkit-scrollbar-thumb:hover {
+  background: #aaa;
+}
+
+.close-modal-details {
+  color: #aaa;
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close-modal-details:hover {
+  color: #000;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.details-product-img {
+  width: 130px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.details-product-name {
+  
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
+  margin: 10px 0 5px;
+}
+
+.details-product-description {
+  font-size: 14px;
+  color: #555;
+  margin: 5px 0;
   text-align: center;
 }
 
-.cart-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Grade responsiva */
-  gap: 20px;
-  width: 100%;
-  padding: 10px;
-}
-
-.cart-item {
-  background: #f9f9f9;
-  border-radius: 8px;
-  padding: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.cart-item-img {
-  width: 80px;
-  height: 80px;
-  object-fit: cover;
-  border-radius: 5px;
-}
-
-.cart-item-details {
-  flex-grow: 1;
-}
-
-.cart-item-name {
+.details-product-price {
   font-size: 16px;
-  font-weight: 500;
-  color: #222;
-  margin: 0;
+  color: #28a745;
+  font-weight: bold;
+  margin: 5px 0;
 }
 
-.cart-item-price {
+.details-product-preco-antigo {
   font-size: 14px;
-  color: #28a745;
-  margin: 5px 0 0;
+  color: #888;
+  text-decoration: line-through;
+  margin: 5px 0;
+}
+
+.details-product-extra {
+  font-size: 13px;
+  color: #666;
+  margin: 10px 0 0;
+  text-align: center;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .modal-content-details {
+    width: 85vw;
+    padding: 15px;
+  }
+  .details-product-img {
+    width: 120px;
+    height: 120px;
+  }
+  .details-product-name {
+    font-size: 16px;
+  }
+  .details-product-price {
+    font-size: 14px;
+  }
 }

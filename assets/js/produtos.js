@@ -3,9 +3,9 @@ let produtos = [];
 let carrinhoCount = parseInt(localStorage.getItem("carrinhoCount")) || 0;
 let carrinhoItens = JSON.parse(localStorage.getItem("carrinhoItens")) || [];
 
-
 const atualizarCarrinho = () => {
-  document.querySelector(".cart-count").textContent = carrinhoItens.length;
+  const totalItens = carrinhoItens.reduce((total, item) => total + item.quantidade, 0);
+  document.querySelector(".cart-count").textContent = totalItens;
   localStorage.setItem("carrinhoItens", JSON.stringify(carrinhoItens));
 };
 atualizarCarrinho(); // atualizar ao carregar a página
@@ -15,17 +15,11 @@ atualizarCarrinho(); // atualizar ao carregar a página
 document.addEventListener("DOMContentLoaded", () => {
   const modal = document.getElementById("cartModal");
   const cartBtn = document.querySelector(".cart-btn");
-  const closeBtn = modal.querySelector(".close-modal");
 
-  // Abrir modal
+  // Abrir modal do carrinho
   cartBtn.addEventListener("click", () => {
     modal.style.display = "block";
     renderizarCarrinho();
-  });
-
-  // Fechar modal ao clicar no X
-  closeBtn.addEventListener("click", () => {
-    modal.style.display = "none";
   });
 
   // Fechar modal ao clicar fora do conteúdo
@@ -33,8 +27,71 @@ document.addEventListener("DOMContentLoaded", () => {
     if (e.target === modal) {
       modal.style.display = "none";
     }
+    const detailsModal = document.getElementById("detailsModal");
+    if (e.target === detailsModal) {
+      detailsModal.style.display = "none";
+    }
   });
 });
+
+// --------------------------------------------------------------------------------- //
+// FUNÇÃO PARA ABRIR MODAL DE DETALHES
+function abrirDetalhesProduto(nome) {
+  const produto = produtos.find(prod => prod.nome === nome);
+  const detailsModal = document.getElementById("detailsModal");
+  const detailsContent = document.getElementById("productDetailsContent");
+
+  if (produto) {
+    // Preenche o conteúdo do modal com os detalhes do produto
+    detailsContent.innerHTML = `<div class="details">
+      <img src="${produto.imagem}" alt="${produto.nome}" class="details-product-img">
+      <h3 class="details-product-name">${produto.nome}</h3>
+      <p class="details-product-description">${produto.descricao}</p>
+      <p class="details-product-price">${produto.preco}</p>
+      ${produto.precoAntigo ? `<p class="details-product-preco-antigo">Preço Antigo: ${produto.precoAntigo}</p>` : ""}
+      <p class="details-product-extra">${produto.detalhes}</p>
+      </div>
+    `;
+
+    // Abre o modal
+    detailsModal.style.display = "block";
+
+    // Adiciona evento para fechar o modal
+    const closeBtn = detailsModal.querySelector(".close-modal-details");
+    closeBtn.addEventListener("click", () => {
+      detailsModal.style.display = "none";
+    });
+  }
+}
+
+// --------------------------------------------------------------------------------- //
+// FUNÇÕES PARA ADICIONAR E REMOVER ITENS DO CARRINHO
+function adicionarAoCarrinho(nome) {
+  const item = produtos.find(prod => prod.nome === nome);
+  if (item) {
+    const itemExistente = carrinhoItens.find(entry => entry.produto.nome === nome);
+    if (itemExistente) {
+      itemExistente.quantidade += 1;
+    } else {
+      carrinhoItens.push({ produto: item, quantidade: 1 });
+    }
+    atualizarCarrinho();
+    renderizarCarrinho();
+  }
+}
+
+function removerDoCarrinho(nome) {
+  const itemExistente = carrinhoItens.find(entry => entry.produto.nome === nome);
+  if (itemExistente) {
+    itemExistente.quantidade -= 1;
+    if (itemExistente.quantidade <= 0) {
+      const index = carrinhoItens.findIndex(entry => entry.produto.nome === nome);
+      carrinhoItens.splice(index, 1);
+    }
+    atualizarCarrinho();
+    renderizarCarrinho();
+  }
+}
 
 // --------------------------------------------------------------------------------- //
 // RENDERIZAÇÃO DA GRID DOS PRODUTOS MOCKADOS NA TELA 
@@ -81,7 +138,10 @@ function renderizarProdutos(lista) {
     const card = document.createElement('div');
     card.classList.add('produto-card');
     card.innerHTML = `
-      <img src="${prod.imagem}" alt="${prod.nome}" style="width: 200px; height: 200px; object-fit: cover;">
+      <div class="product-header">
+        <img src="${prod.imagem}" alt="${prod.nome}" style="width: 200px; height: 200px; object-fit: cover;">
+        <span class="info-icon" onclick="abrirDetalhesProduto('${prod.nome}')"><i class="fas fa-info-circle"></i></span>
+      </div>
       <h3>${prod.nome}</h3>
       <p>${prod.descricao}</p>
       <p class="preco">
@@ -92,10 +152,8 @@ function renderizarProdutos(lista) {
     `;
 
     // Evento de clique no botão
-card.querySelector(".btn-comprar").addEventListener("click", () => {
-  carrinhoItens.push(prod);
-  atualizarCarrinho();
-
+    card.querySelector(".btn-comprar").addEventListener("click", () => {
+      adicionarAoCarrinho(prod.nome);
     });
 
     container.appendChild(card);
@@ -104,72 +162,3 @@ card.querySelector(".btn-comprar").addEventListener("click", () => {
 
 // --------------------------------------------------------------------------------- //
 // ANIMAÇÃO DE SCROLL SUAVE PARA LINKS DO MENU
-document.querySelectorAll('nav.nav-menu a[href^="#"]').forEach(link => {
-  link.addEventListener('click', function(event) {
-    event.preventDefault();
-    const targetID = this.getAttribute('href').substring(1);
-    const targetSection = document.getElementById(targetID);
-    if (targetSection) {
-      targetSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  });
-});
-
-document.querySelectorAll('nav.menu_2 a[href^="#"]').forEach(link => {
-  link.addEventListener('click', function(event) {
-    event.preventDefault();
-    const targetID = this.getAttribute('href').substring(1);
-    const targetSection = document.getElementById(targetID);
-    if (targetSection) {
-      targetSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  });
-});
-
-// --------------------------------------------------------------------------------- //
-
-// RENDERIZAR CARRINHO NO MODAL 
-
-// RENDERIZAR CARRINHO NO MODAL 
-function renderizarCarrinho() {
-  const modalContent = document.querySelector(".modal-content-2");
-
-  // Limpa conteúdo mantendo o botão de fechar
-  while (modalContent.firstChild && modalContent.firstChild.className !== "close-modal") {
-    modalContent.removeChild(modalContent.firstChild);
-  }
-
-
-
-  if (carrinhoItens.length === 0) {
-    modalContent.innerHTML += `<p class="empty-cart">Seu carrinho está vazio.</p>`;
-    return;
-  }
-
-  const cartGrid = document.createElement("div");
-  cartGrid.classList.add("cart-grid");
-  modalContent.appendChild(cartGrid);
-
-  carrinhoItens.forEach((item, index) => {
-    const itemDiv = document.createElement("div");
-    itemDiv.classList.add("cart-item");
-    itemDiv.style.opacity = "0"; // Para animação
-    itemDiv.style.transition = "opacity 0.3s ease-in-out";
-
-    itemDiv.innerHTML = `
-      <img src="${item.imagem}" alt="${item.nome}" class="cart-item-img">
-      <div class="cart-item-details">
-        <h4 class="cart-item-name">${item.nome}</h4>
-        <p class="cart-item-price">${item.preco}</p>
-      </div>
-    `;
-
-    cartGrid.appendChild(itemDiv);
-
-    // Animação de entrada
-    setTimeout(() => {
-      itemDiv.style.opacity = "1";
-    }, index * 100); // Atraso por item para efeito cascata
-  });
-}
-

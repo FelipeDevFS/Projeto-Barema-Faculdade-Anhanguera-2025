@@ -6,7 +6,8 @@
     "preco": "Por: R$ 3.999,90",
     "precoAntigo": "De: R$ 4.299,90",
     "categoria": "processador",
-    "imagem": "./assets/img/ProcessadorI9.jpg"
+    "imagem": "./assets/img/ProcessadorI9.jpg",
+    "detalhes": "O Intel Core i9-14900K é um processador de 14ª geração com 24 núcleos e 32 threads, ideal para overclocking, edição de vídeo 4K, e jogos de alta demanda. Suporta até 192GB de RAM DDR5 e oferece desempenho excepcional para workstations e gamers entusiastas."
   },
   {
     "id": 2,
@@ -15,7 +16,8 @@
     "preco": "Por: R$ 11.999,90",
     "precoAntigo": "",
     "categoria": "gpu",
-    "imagem": "./assets/img/rtx4090.jpg"
+    "imagem": "./assets/img/rtx4090.jpg",
+    "detalhes": "A NVIDIA RTX 4090 traz a arquitetura Ada Lovelace com 24GB de GDDR6X, Ray Tracing em tempo real e suporte a DLSS 3. Perfeita para resoluções 8K, criação de conteúdo em 3D e simulações complexas, com refrigeração avançada."
   },
   {
     "id": 3,
@@ -24,7 +26,8 @@
     "preco": "Por: R$ 2.199,90",
     "precoAntigo": "",
     "categoria": "memoria",
-    "imagem": "./assets/img/RAM.jpg"
+    "imagem": "./assets/img/RAM.jpg",
+    "detalhes": "A Corsair Dominator oferece 32GB (2x16GB) a 5200MHz com design premium e iluminação RGB personalizável. Compatível com plataformas Intel e AMD, ideal para sistemas de alto desempenho e estética personalizada."
   },
   {
     "id": 4,
@@ -33,6 +36,7 @@
     "preco": "Por: R$ 1.299,90",
     "precoAntigo": "De: R$ 1.499,90",
     "categoria": "storage",
-    "imagem": "./assets/img/NVME.jpg"
+    "imagem": "./assets/img/NVME.jpg",
+    "detalhes": "O Samsung 990 PRO 2TB NVMe oferece velocidades de leitura de até 7450MB/s e escrita de 6900MB/s, com controle térmico avançado. Perfeito para carregamentos rápidos em jogos e transferência de arquivos pesados."
   }
 ]
